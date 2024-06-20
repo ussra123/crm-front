@@ -1,0 +1,17 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .layout-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .main-content {
+    margin-left: 200px;
+    padding: 20px;
+    width: calc(100% - 200px);
+  }
+  
