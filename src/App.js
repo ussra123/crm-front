@@ -7,35 +7,36 @@ import ScreenshotsSection from './Components/ScreenshotsSection/ScreenshotsSecti
 import ContactForm from './Components/ContactForm/ContactForm';
 import FAQs from './Components/FAQs/FAQs';
 import Footer from './Components/Footer/Footer';
-import Layout from './Components/Layout/Layout';
-import Overview from './Components/Dashboard/Overview';
-import Sales from './Components/Dashboard/Sales';
+import SignupForm from './Components/SignupForm';
+import LoginForm from './Components/LoginForm';
+import Dashboard from './Components/Dashboard';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Main Interface */}
-        <Route path="/" element={
-          <div className="App">
-            <Navbar />
-            <HeroSection />
-            <FeaturesSection />
-            <ScreenshotsSection />
-            <ContactForm />
-            <FAQs />
-            <Footer />
-          </div>
-        } />
-
-        {/*Dashboard*/}
-        <Route path="dashboard" element={<Layout />}>
-          <Route path="overview" element={<Overview />} />
-          <Route path="sales" element={<Sales />} />
-          <Route index element={<Overview />} />
-        </Route>
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Main Interface */}
+          <Route path="/" element={
+            <div className="App">
+              <Navbar />
+              <HeroSection />
+              <FeaturesSection />
+              <ScreenshotsSection />
+              <ContactForm />
+              <FAQs />
+              <Footer />
+            </div>
+          } />
+          {/* Authentication */}
+          <Route path="/signup" element={<SignupForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          {/* Dashboard */}
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
